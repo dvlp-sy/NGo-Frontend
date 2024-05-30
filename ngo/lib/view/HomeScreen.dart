@@ -115,9 +115,21 @@ class _TodayNewsState extends State<_TodayNewsWidget> {
         child: Container(
             width: 350,
             height: 80,
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
                 color: const Color(0xFFEEEEEE),
-                borderRadius: BorderRadius.circular(20))));
+                borderRadius: BorderRadius.circular(20)),
+            child: const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text('오늘의 신문 ',
+                      style: TextStyle(
+                          color: Color(0xFF868686),
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold)),
+                  Icon(Icons.arrow_forward, size: 18, color: Color(0xFF868686))
+                ])));
   }
 }
 
