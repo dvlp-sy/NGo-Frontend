@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'news/NewsScreen.dart';
-import 'member/AttendanceScreen.dart';
-import 'rank/LeaderBoardScreen.dart';
-import 'scrap/ScrapScreen.dart';
 import 'MainScreen.dart';
 
 class HomeScreen extends StatelessWidget {
