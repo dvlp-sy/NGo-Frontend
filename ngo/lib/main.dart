@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ngo/view/HomeView.dart';
+import 'package:ngo/view/MainScreen.dart';
 
-main() => runApp(MyApp());
+main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: '신문고', home: HomeWidget());
+    return const MaterialApp(title: '신문고', home: MainScreen());
   }
 }
 
