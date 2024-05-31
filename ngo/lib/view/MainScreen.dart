@@ -31,7 +31,7 @@ class _MenuState extends State<MainScreen> {
     ScrapScreen(),
     AccountScreen(),
     AttendanceScreen(),
-    NewsScreen()
+    NewsView()
   ];
 
   @override

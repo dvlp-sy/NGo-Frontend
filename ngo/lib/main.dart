@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/MainScreen.dart';
+import 'package:ngo/viewModel/TodayNewsViewModel.dart';
+import 'package:provider/provider.dart';
 
-main() => runApp(const MyApp());
+void main() {
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => TodayNewsViewModel())],
+      child: const MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,9 +17,6 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(title: '신문고', home: MainScreen());
   }
 }
-
-
-
 
 /*
 import 'package:flutter/material.dart';

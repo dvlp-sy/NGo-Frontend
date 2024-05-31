@@ -100,7 +100,7 @@ class _TodayNewsWidget extends StatefulWidget {
 class _TodayNewsState extends State<_TodayNewsWidget> {
   void _buttonPressed() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const NewsScreen()));
+        context, MaterialPageRoute(builder: (context) => const NewsView()));
   }
 
   @override
@@ -152,7 +152,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
 
   void _onTapNews() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const NewsScreen()));
+        context, MaterialPageRoute(builder: (context) => const NewsView()));
   }
 
   @override
