@@ -20,6 +20,8 @@ class TodayNews {
       this.contents,
       this.level});
 
+  TodayNews.empty();
+
   factory TodayNews.fromJson(Map<String, dynamic> json) {
     return TodayNews(
         newsId: json['newsId'],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ngo/view/news/NewsView.dart';
+import 'package:ngo/view/member/AccountView.dart';
 import 'news/TodayNewsView.dart';
 import 'MainView.dart';
 
@@ -151,7 +151,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
 
   void _onTapNews() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const NewsView()));
+        context, MaterialPageRoute(builder: (context) => const AccountView()));
   }
 
   @override

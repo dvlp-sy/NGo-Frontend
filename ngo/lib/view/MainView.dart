@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/member/AccountView.dart';
 import 'package:ngo/view/member/AttendanceView.dart';
-import 'package:ngo/view/news/NewsView.dart';
 import 'HomeView.dart';
 import 'rank/LeaderBoardView.dart';
 import 'scrap/ScrapView.dart';
@@ -31,7 +30,6 @@ class _MenuState extends State<MainView> {
     ScrapScreen(),
     AccountView(),
     AttendanceView(),
-    NewsView()
   ];
 
   @override
@@ -50,7 +48,10 @@ class _MenuState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(controller: _pageController, children: _widgetOptions),
+        body: PageView(
+            controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: _widgetOptions),
         bottomNavigationBar: Container(
             width: 200,
             height: 80,
