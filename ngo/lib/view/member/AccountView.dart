@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
+class AccountView extends StatelessWidget {
+  const AccountView({super.key});
 
   @override
   Widget build(BuildContext context) {

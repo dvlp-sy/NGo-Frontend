@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'news/NewsScreen.dart';
-import 'MainScreen.dart';
+import 'package:ngo/view/news/NewsView.dart';
+import 'news/TodayNewsView.dart';
+import 'MainView.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -91,7 +92,7 @@ Widget _buildChallengeWidet() {
 ///
 
 class _TodayNewsWidget extends StatefulWidget {
-  const _TodayNewsWidget({Key? key}) : super(key: key);
+  const _TodayNewsWidget({super.key});
 
   @override
   State<_TodayNewsWidget> createState() => _TodayNewsState();
@@ -99,8 +100,8 @@ class _TodayNewsWidget extends StatefulWidget {
 
 class _TodayNewsState extends State<_TodayNewsWidget> {
   void _buttonPressed() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const NewsView()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const TodayNewsView()));
   }
 
   @override
@@ -144,10 +145,8 @@ class _ChallengeWidget extends StatefulWidget {
 
 class _ChallengeState extends State<_ChallengeWidget> {
   void _onTap(int index) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => MainScreen(initialIndex: index)));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => MainView(initialIndex: index)));
   }
 
   void _onTapNews() {

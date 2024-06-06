@@ -1,6 +1,6 @@
 class TodayNews {
   int? newsId;
-  DateTime? date;
+  String? date;
   String? title;
   String? media;
   String? editor;

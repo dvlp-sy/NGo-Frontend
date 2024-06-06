@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:ngo/view/member/AttendanceScreen.dart';
-import 'package:ngo/view/news/NewsScreen.dart';
-import 'HomeScreen.dart';
-import 'member/AccountScreen.dart';
-import 'rank/LeaderBoardScreen.dart';
-import 'scrap/ScrapScreen.dart';
+import 'package:ngo/view/member/AccountView.dart';
+import 'package:ngo/view/member/AttendanceView.dart';
+import 'package:ngo/view/news/NewsView.dart';
+import 'HomeView.dart';
+import 'rank/LeaderBoardView.dart';
+import 'scrap/ScrapView.dart';
 
-class MainScreen extends StatefulWidget {
+class MainView extends StatefulWidget {
   final int initialIndex;
-  const MainScreen({super.key, this.initialIndex = 0});
+  const MainView({super.key, this.initialIndex = 0});
 
   @override
-  State<MainScreen> createState() => _MenuState();
+  State<MainView> createState() => _MenuState();
 }
 
-class _MenuState extends State<MainScreen> {
+class _MenuState extends State<MainView> {
   late PageController _pageController = PageController();
   late int _selectedIndex;
 
@@ -29,8 +29,8 @@ class _MenuState extends State<MainScreen> {
     HomeScreen(),
     LeaderBoardScreen(),
     ScrapScreen(),
-    AccountScreen(),
-    AttendanceScreen(),
+    AccountView(),
+    AttendanceView(),
     NewsView()
   ];
 

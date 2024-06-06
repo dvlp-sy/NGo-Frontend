@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ngo/view/MainScreen.dart';
+import 'package:ngo/view/MainView.dart';
 import 'package:ngo/viewModel/TodayNewsViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: '신문고', home: MainScreen());
+    return const MaterialApp(title: '신문고', home: MainView());
   }
 }
 

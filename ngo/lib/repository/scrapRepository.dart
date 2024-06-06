@@ -1,10 +1,10 @@
-import '../model/scrapModel.dart';
+import '../model/Scrap.dart';
 import '../dataSource/scrapDataSource.dart';
 
 class ScrapRepository {
   final _scrapDataSource = ScrapDataSource();
 
-  Future<ScrapListDto> getAllScraps(int userId) {
+  Future<ScrapList> getAllScraps(int userId) {
     return _scrapDataSource.getAllScraps(userId);
   }
 }

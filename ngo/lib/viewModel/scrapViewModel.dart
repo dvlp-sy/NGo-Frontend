@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../model/scrapModel.dart';
-import '../repository/scrapRepository.dart';
+import '../model/Scrap.dart';
+import '../repository/ScrapRepository.dart';
 
 class ScrapViewModel with ChangeNotifier {
   late final ScrapRepository _scrapRepository;
-  late ScrapListDto _scrapListDto;
-  ScrapListDto get scrapListDto => _scrapListDto;
+  late ScrapList _scrapListDto;
+  ScrapList get scrapListDto => _scrapListDto;
 
   ScrapViewModel(int userId) {
     _scrapRepository = ScrapRepository();
