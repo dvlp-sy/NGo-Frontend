@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/MainView.dart';
+import 'package:ngo/viewModel/AttendanceViewModel.dart';
 import 'package:ngo/viewModel/TodayNewsViewModel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => TodayNewsViewModel())],
-      child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: '신문고', home: MainView());
+    int userId = 1;
+
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => TodayNewsViewModel()),
+      ChangeNotifierProvider(create: (_) => AllAttendanceViewModel(userId))
+    ], child: const MaterialApp(title: '신문고', home: MainView()));
   }
 }
 

@@ -5,8 +5,6 @@ class UserRankDto {
 
   UserRankDto({this.userId, this.userRank, this.userName});
 
-  UserRankDto.empty();
-
   factory UserRankDto.fromJson(Map<String, dynamic> json) {
     return UserRankDto(
       userId: json['userId'],

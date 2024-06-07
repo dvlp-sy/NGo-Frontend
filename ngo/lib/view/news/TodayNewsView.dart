@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/news/NewsView.dart';
-import 'package:ngo/view/news/ReadingCompleteView.dart';
+import 'package:ngo/view/news/LoadingCompleteView.dart';
 import 'package:provider/provider.dart';
 import '../../model/TodayNews.dart';
 import '../../viewModel/TodayNewsViewModel.dart';
@@ -30,7 +30,7 @@ class _NewsViewState extends State<TodayNewsView> {
     for (TodayNews todayNews in todayNewsList) {
       pageList.add(NewsView(todayNews: todayNews));
     }
-    pageList.add(const ReadingCompleteView());
+    pageList.add(const LoadingCompleteView());
     return pageList;
   }
 

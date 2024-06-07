@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/member/AccountView.dart';
 import 'package:ngo/view/member/AttendanceView.dart';
+import 'package:ngo/view/news/NewsListView.dart';
+import 'package:ngo/view/news/ReadingCompleteView.dart';
 import 'HomeView.dart';
 import 'rank/LeaderBoardView.dart';
 import 'scrap/ScrapView.dart';
@@ -29,7 +31,9 @@ class _MenuState extends State<MainView> {
     LeaderBoardView(),
     ScrapScreen(),
     AccountView(),
-    AttendanceView()
+    AttendanceView(),
+    ReadingCompleteView(),
+    NewsListView()
   ];
 
   @override
