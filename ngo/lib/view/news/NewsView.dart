@@ -24,10 +24,45 @@ class _NewsViewState extends State<NewsView> {
     _pageController = PageController(initialPage: _selectedIndex);
   }
 
+  String getString(String? value) {
+    if (value != null && value != "") {
+      return value.toString();
+    }
+    return "";
+  }
+
+  List<String> splitContents(String contents) {
+    List<String> sentences = [];
+    String currentContent = "";
+    int contentLength = 0;
+
+    for (int i = 0; i < contents.length; i++) {
+      currentContent += contents[i];
+      contentLength++;
+
+      if (contents[i] == '.') {
+        if (contentLength > 100) {
+          sentences.add(currentContent.substring(0, currentContent.length));
+          currentContent = "";
+          contentLength = 0;
+        }
+      }
+    }
+
+    if (currentContent.isNotEmpty) {
+      sentences.add(currentContent);
+    }
+
+    return sentences;
+  }
+
   List<Widget> _initPageList(TodayNews todayNews) {
     List<Widget> pageList = [];
+    List<String> contentList = splitContents(getString(todayNews.contents));
     pageList.add(ThumbnailView(todayNews: todayNews));
-    pageList.add(ContentView(todayNews: todayNews));
+    for (String content in contentList) {
+      pageList.add(ContentView(content: content));
+    }
     return pageList;
   }
 
