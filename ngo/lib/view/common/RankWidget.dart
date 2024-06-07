@@ -8,8 +8,10 @@ class RankWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: 450,
+        height: 450,
         margin: const EdgeInsets.all(20),
-        child: Column(children: [
+        child: SingleChildScrollView(
+            child: Column(children: [
           if (viewModel.rankDto?.userRankDtoList != null)
             ...viewModel.rankDto!.userRankDtoList!.map((user) {
               return Container(
@@ -37,6 +39,6 @@ class RankWidget extends StatelessWidget {
                             ))
                       ]));
             })
-        ]));
+        ])));
   }
 }
