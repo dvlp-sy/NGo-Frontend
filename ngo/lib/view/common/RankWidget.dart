@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 class RankWidget extends StatelessWidget {
   final dynamic viewModel;
-  const RankWidget({super.key, required this.viewModel});
+  final double height;
+  const RankWidget({super.key, required this.viewModel, required this.height});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 450,
-        height: 450,
+        height: height,
         margin: const EdgeInsets.all(20),
         child: SingleChildScrollView(
             child: Column(children: [

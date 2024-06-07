@@ -100,8 +100,8 @@ class CalendarView extends StatelessWidget {
         return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
           Container(
               width: 350,
-              height: 100,
-              margin: const EdgeInsets.only(top: 130, left: 20, right: 20),
+              height: 40,
+              margin: const EdgeInsets.only(left: 20, right: 20),
               padding: const EdgeInsets.only(left: 5, right: 5),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -127,7 +127,7 @@ class CalendarView extends StatelessWidget {
                   ])),
           SizedBox(
               width: 350,
-              height: 500,
+              height: 460,
               child: GridView.count(
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 7,

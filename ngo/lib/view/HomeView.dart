@@ -180,7 +180,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                        onTap: () => _onTap(4),
+                        onTap: () => _onTap(3),
                         child: Container(
                             width: 150,
                             height: 150,

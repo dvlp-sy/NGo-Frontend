@@ -5,7 +5,8 @@ import 'package:ngo/viewModel/RankViewModel.dart';
 import 'package:provider/provider.dart';
 
 class WeekRankView extends StatefulWidget {
-  const WeekRankView({super.key});
+  final double height;
+  const WeekRankView({super.key, required this.height});
 
   @override
   State<WeekRankView> createState() => _WeekRankState();
@@ -31,7 +32,10 @@ class _WeekRankState extends State<WeekRankView> {
             textAlign: TextAlign.left,
             style: TextStyle(color: Color(0xFF868686)),
           )),
-      RankWidget(viewModel: viewModel),
+      RankWidget(
+        viewModel: viewModel,
+        height: widget.height,
+      ),
       MyRankWidget(viewModel: viewModel)
     ]);
   }

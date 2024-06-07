@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ngo/view/common/AppBarWidget.dart';
 import 'package:ngo/view/rank/DayRankView.dart';
 import 'package:ngo/view/rank/WeekRankView.dart';
-import 'package:ngo/viewModel/RankViewModel.dart';
-import 'package:provider/provider.dart';
 
 class LeaderBoardView extends StatelessWidget {
   final int initialIndex;
@@ -12,15 +10,7 @@ class LeaderBoardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<DayRankViewModel>(
-            create: (_) => DayRankViewModel(1)),
-        ChangeNotifierProvider<WeekRankViewModel>(
-            create: (_) => WeekRankViewModel(1))
-      ],
-      child: _LeaderBoardWidget(initialIndex: initialIndex),
-    );
+    return _LeaderBoardWidget(initialIndex: initialIndex);
   }
 }
 
@@ -40,8 +30,8 @@ class _LeaderBoardState extends State<_LeaderBoardWidget> {
   FontWeight _weekWeight = FontWeight.normal;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    DayRankView(),
-    WeekRankView()
+    DayRankView(height: 450),
+    WeekRankView(height: 450)
   ];
 
   void _selectButton(int index) {

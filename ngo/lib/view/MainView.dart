@@ -9,7 +9,8 @@ import 'scrap/ScrapView.dart';
 
 class MainView extends StatefulWidget {
   final int initialIndex;
-  const MainView({super.key, this.initialIndex = 0});
+  final int atdIdx;
+  const MainView({super.key, this.initialIndex = 0, this.atdIdx = 0});
 
   @override
   State<MainView> createState() => _MenuState();
@@ -31,9 +32,8 @@ class _MenuState extends State<MainView> {
     LeaderBoardView(),
     ScrapScreen(),
     AccountView(),
-    AttendanceView(),
     ReadingCompleteView(),
-    NewsListView()
+    NewsListView(),
   ];
 
   @override
@@ -42,7 +42,7 @@ class _MenuState extends State<MainView> {
     super.dispose();
   }
 
-  void _onTap(int index) {
+  void _onTap(int index, {int atdIdx = 0}) {
     setState(() {
       _selectedIndex = index;
     });
