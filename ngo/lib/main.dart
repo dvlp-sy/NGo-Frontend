@@ -1,51 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:ngo/view/MainView.dart';
+import 'package:ngo/viewModel/TodayNewsViewModel.dart';
+import 'package:provider/provider.dart';
 
-main() => runApp(MyApp());
+void main() {
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => TodayNewsViewModel())],
+      child: const MyApp()));
+}
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: '신문고',
-      home: Scaffold(
-          appBar: MyAppBar(),
-          body: ListView(
-            children: [],
-          )),
-    );
+    return const MaterialApp(title: '신문고', home: MainView());
   }
 }
-
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: double.infinity,
-        height: 140,
-        padding: const EdgeInsets.all(20),
-        decoration: const BoxDecoration(
-            color: Color(0xFF7AD8C2),
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30))),
-        child:
-            const Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Text('안녕하세요!',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 255, 255, 255))),
-          Text('오늘도 신문!Go를 방문해주셔서 감사합니다',
-              style: TextStyle(
-                  fontSize: 12, color: Color.fromARGB(255, 255, 255, 255)))
-        ]));
-  }
-
-  @override
-  Size get preferredSize => Size(0.0, 135.0);
-}
-
-
 
 /*
 import 'package:flutter/material.dart';
