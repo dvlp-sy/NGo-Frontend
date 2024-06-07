@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AttendanceScreen extends StatelessWidget {
-  const AttendanceScreen({super.key});
+class NewsListView extends StatelessWidget {
+  const NewsListView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -32,7 +32,9 @@ class TitleBarWidget extends StatelessWidget implements PreferredSizeWidget {
                   width: 350,
                   padding: const EdgeInsets.only(top: 60),
                   alignment: Alignment.centerLeft,
-                  child: const GoBackWidget(size: 24)),
+                  child: const Row(children: [
+                    GoBackWidget(size: 24),
+                  ])),
               Container(
                   width: 350,
                   padding: const EdgeInsets.only(top: 20),

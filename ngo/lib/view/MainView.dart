@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/member/AccountView.dart';
 import 'package:ngo/view/member/AttendanceView.dart';
+import 'package:ngo/view/news/ReadingCompleteView.dart';
 import 'HomeView.dart';
 import 'rank/LeaderBoardView.dart';
 import 'scrap/ScrapView.dart';
@@ -26,10 +27,11 @@ class _MenuState extends State<MainView> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    LeaderBoardScreen(),
+    LeaderBoardView(),
     ScrapScreen(),
     AccountView(),
     AttendanceView(),
+    ReadingCompleteView()
   ];
 
   @override
