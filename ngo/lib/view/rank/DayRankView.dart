@@ -23,6 +23,14 @@ class _DayRankState extends State<DayRankView> {
   Widget build(BuildContext context) {
     viewModel = Provider.of<DayRankViewModel>(context);
     return Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Container(
+          width: 350,
+          padding: const EdgeInsets.only(top: 10, left: 10),
+          child: const Text(
+            "일일 랭킹은 매일 오전 6:00에 초기화됩니다",
+            textAlign: TextAlign.left,
+            style: TextStyle(color: Color(0xFF868686)),
+          )),
       RankWidget(viewModel: viewModel),
       MyRankWidget(viewModel: viewModel)
     ]);

@@ -78,7 +78,10 @@ class _LeaderBoardState extends State<_LeaderBoardWidget> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+                border: Border(
+                    bottom: BorderSide(width: 1, color: Color(0xFFEEEEEE)))),
+            padding: const EdgeInsets.all(15),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -101,11 +104,6 @@ class _LeaderBoardState extends State<_LeaderBoardWidget> {
                               fontWeight: _weekWeight,
                               color: const Color(0xFF000000))))
                 ]),
-          ),
-          const Text(
-            "일일 랭킹은 매일 오전 6:00에 초기화됩니다",
-            textAlign: TextAlign.left,
-            style: TextStyle(color: Color(0xFF868686)),
           ),
           Expanded(
             child: PageView(
