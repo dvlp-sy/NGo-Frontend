@@ -23,9 +23,10 @@ class _WeekRankState extends State<WeekRankView> {
   @override
   Widget build(BuildContext context) {
     viewModel = Provider.of<WeekRankViewModel>(context);
-    return Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+    return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       Container(
           width: 350,
+          height: 30,
           padding: const EdgeInsets.only(top: 10, left: 10),
           child: const Text(
             "주간 랭킹은 매주 월요일 오전 6:00에 초기화됩니다",

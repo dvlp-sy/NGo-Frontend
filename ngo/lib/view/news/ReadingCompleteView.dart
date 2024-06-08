@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/MainView.dart';
-import 'package:ngo/view/common/MyRankWidget.dart';
+import 'package:ngo/view/member/WeekCalendarView.dart';
+import 'package:ngo/view/rank/DayRankView.dart';
 import 'package:ngo/viewModel/RankViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -102,6 +103,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
                 onTap: () => _onTap(1),
                 child: Container(
                     width: 110,
+                    height: 110,
                     padding: const EdgeInsets.all(10),
                     margin: const EdgeInsets.only(top: 5, bottom: 5, right: 5),
                     decoration: BoxDecoration(
@@ -123,6 +125,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
               onTap: () => _onTap(2),
               child: Container(
                   width: 110,
+                  height: 110,
                   padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
@@ -143,6 +146,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
               onTap: () => _onTap(6),
               child: Container(
                   width: 110,
+                  height: 110,
                   padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.only(top: 5, bottom: 5, left: 5),
                   decoration: BoxDecoration(
@@ -201,7 +205,8 @@ class _AttendanceWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
           SizedBox(
               width: 350,
-              child: Text("최근 일주일간 출석 현황입니다.", textAlign: TextAlign.left))
+              child: Text("최근 일주일간 출석 현황입니다.", textAlign: TextAlign.left)),
+          WeekCalendarView()
         ]);
   }
 }
@@ -225,16 +230,17 @@ class _RankState extends State<_RankWidget> {
   Widget build(BuildContext context) {
     viewModel = Provider.of<WeekRankViewModel>(context);
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const SizedBox(
-          width: 350,
-          child: Text("일일 랭킹",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
-      const SizedBox(
-          width: 350, child: Text("오늘의 순위입니다.", textAlign: TextAlign.left)),
-      SizedBox(width: 350, child: MyRankWidget(viewModel: viewModel))
-    ]);
+    return const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(
+              width: 350,
+              child: Text("일일 랭킹",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+          SizedBox(width: 350, child: DayRankView(height: 120))
+        ]);
   }
 }
 

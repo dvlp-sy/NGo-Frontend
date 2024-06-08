@@ -13,7 +13,7 @@ class MyRankWidget extends StatelessWidget {
           width: 350,
           height: 40,
           margin:
-              const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 50),
+              const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
           padding: const EdgeInsets.only(right: 20),
           decoration: BoxDecoration(
               color: const Color(0xFFEEEEEE),

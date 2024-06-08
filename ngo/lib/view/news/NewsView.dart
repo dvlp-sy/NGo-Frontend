@@ -41,7 +41,7 @@ class _NewsViewState extends State<NewsView> {
       contentLength++;
 
       if (contents[i] == '.') {
-        if (contentLength > 100) {
+        if (contentLength > 80) {
           sentences.add(currentContent.substring(0, currentContent.length));
           currentContent = "";
           contentLength = 0;

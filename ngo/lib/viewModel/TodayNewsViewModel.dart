@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../model/TodayNews.dart';
 import '../repository/TodayNewsRepository.dart';
 
-class TodayNewsViewModel with ChangeNotifier {
+class TodayNewsViewModel extends ChangeNotifier {
   late final TodayNewsRepository _todayNewsRepository;
   List<TodayNews> _todayNewsList = List.empty(growable: true);
   List<TodayNews> get todayNewsList => _todayNewsList;

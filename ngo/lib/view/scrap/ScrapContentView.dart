@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ContentView extends StatefulWidget {
+class ScrapContentView extends StatefulWidget {
   final String content;
-  const ContentView({super.key, required this.content});
+  const ScrapContentView({super.key, required this.content});
 
   @override
-  State<ContentView> createState() => _ContentViewState();
+  State<ScrapContentView> createState() => _ContentViewState();
 }
 
-class _ContentViewState extends State<ContentView> {
+class _ContentViewState extends State<ScrapContentView> {
   double _fontSize = 20;
   int selectedButton = 3;
 

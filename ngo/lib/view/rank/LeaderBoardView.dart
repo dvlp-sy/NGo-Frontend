@@ -30,8 +30,8 @@ class _LeaderBoardState extends State<_LeaderBoardWidget> {
   FontWeight _weekWeight = FontWeight.normal;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    DayRankView(height: 450),
-    WeekRankView(height: 450)
+    DayRankView(height: 500),
+    WeekRankView(height: 500)
   ];
 
   void _selectButton(int index) {
@@ -64,7 +64,7 @@ class _LeaderBoardState extends State<_LeaderBoardWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(),
+      appBar: const AppBarWidget(text: "랭킹"),
       body: Column(
         children: [
           Container(

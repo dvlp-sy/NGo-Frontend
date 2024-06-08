@@ -1,23 +1,54 @@
 class Scrap {
   String? title;
-  String? link;
+  String? contents;
   String? media;
+  String? editor;
+  String? summary;
+  String? thumbnail;
 
-  Scrap({this.title, this.link, this.media});
+  Scrap(
+      {this.title,
+      this.contents,
+      this.media,
+      this.editor,
+      this.summary,
+      this.thumbnail});
 
   factory Scrap.fromJson(Map<String, dynamic> json) {
     return Scrap(
-        title: json['title'], link: json['link'], media: json['media']);
+        title: json['title'],
+        contents: json['contents'],
+        media: json['media'],
+        editor: json['editor'],
+        summary: json['summary'],
+        thumbnail: json['thumbnail']);
   }
 }
 
-class ScrapList {
+class ScrapDto {
+  int? scrapId;
+  String? title;
+  String? media;
+
+  ScrapDto({this.scrapId, this.title, this.media});
+
+  factory ScrapDto.fromJson(Map<String, dynamic> json) {
+    return ScrapDto(
+        scrapId: json['scrapId'], title: json['title'], media: json['media']);
+  }
+}
+
+class ScrapListDto {
   int? userId;
-  List<Scrap>? scrapList;
+  List<ScrapDto>? scrapDtoList;
 
-  ScrapList({this.userId, this.scrapList});
+  ScrapListDto({this.userId, this.scrapDtoList});
 
-  factory ScrapList.fromJson(Map<String, dynamic> json) {
-    return ScrapList(userId: json['userId'], scrapList: json['scrapList']);
+  factory ScrapListDto.fromJson(Map<String, dynamic> json) {
+    return ScrapListDto(
+        userId: json['userId'],
+        scrapDtoList: (json['scrapDtoList'] as List)
+            .map((e) => ScrapDto.fromJson(e))
+            .toList());
   }
 }

@@ -6,11 +6,29 @@ import 'BaseAddress.dart';
 class ScrapDataSource {
   String address = BaseAddress.address;
 
-  Future<ScrapList> getAllScraps(int userId) async {
+  Future<ScrapListDto> getAllScraps(int userId) async {
     final response =
         await http.get(Uri.parse('$address/api/users/$userId/scraps'));
-    return jsonDecode(response.body)
-        .map<ScrapList>((json) => ScrapList.fromJson(json))
-        .toList();
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonResponse =
+          jsonDecode(utf8.decode(response.bodyBytes));
+      return ScrapListDto.fromJson(jsonResponse['data']);
+    } else {
+      throw Exception('Failed to Load Scrap List');
+    }
+  }
+
+  Future<Scrap> getScrap(int userId, int scrapId) async {
+    final response =
+        await http.get(Uri.parse('$address/api/users/$userId/scraps/$scrapId'));
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> jsonResponse =
+          jsonDecode(utf8.decode(response.bodyBytes));
+      return Scrap.fromJson(jsonResponse['data']);
+    } else {
+      throw Exception('Failed to Load Scrap');
+    }
   }
 }

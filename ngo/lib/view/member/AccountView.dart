@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/member/AttendanceView.dart';
 import 'package:ngo/view/member/MyPageView.dart';
-import 'package:ngo/view/rank/LeaderBoardView.dart';
 import 'package:ngo/view/rank/WeekRankView.dart';
 
 class AccountView extends StatelessWidget {

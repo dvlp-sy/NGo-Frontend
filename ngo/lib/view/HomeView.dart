@@ -3,8 +3,8 @@ import 'package:ngo/view/member/AccountView.dart';
 import 'news/TodayNewsView.dart';
 import 'MainView.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -165,108 +165,114 @@ class _ChallengeState extends State<_ChallengeWidget> {
           const SizedBox(
               width: 350,
               height: 30,
-              child: Text('도전과제',
+              child: Text('서비스',
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
           const SizedBox(
               width: 350,
               height: 30,
-              child: Text('로그인 후 이용 가능합니다',
+              child: Text('신문!Go가 제공하는 여러 가지 기능들을 만나보세요',
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 14, color: Color(0xFF858585)))),
           SizedBox(
               width: 350,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              height: 330,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                        onTap: () => _onTap(3),
-                        child: Container(
-                            width: 150,
-                            height: 150,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFEEEEEE),
-                                borderRadius: BorderRadius.circular(20)),
-                            child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Icon(Icons.arrow_forward,
-                                      size: 18, color: Color(0xFF868686)),
-                                  Text('출석 확인하기',
-                                      style: TextStyle(
-                                          color: Color(0xFF868686),
-                                          fontWeight: FontWeight.bold))
-                                ]))),
-                    GestureDetector(
-                        onTap: () => _onTap(1),
-                        child: Container(
-                            width: 150,
-                            height: 150,
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFEEEEEE),
-                                borderRadius: BorderRadius.circular(20)),
-                            child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Icon(Icons.arrow_forward,
-                                      size: 18, color: Color(0xFF868686)),
-                                  Text('랭킹 확인하기',
-                                      style: TextStyle(
-                                          color: Color(0xFF868686),
-                                          fontWeight: FontWeight.bold))
-                                ]))),
-                  ])),
-          SizedBox(
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                GestureDetector(
-                    onTap: () => _onTap(2),
-                    child: Container(
-                        width: 150,
-                        height: 150,
-                        padding: const EdgeInsets.all(20),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFEEEEEE),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(Icons.arrow_forward,
-                                  size: 18, color: Color(0xFF868686)),
-                              Text('스크랩 읽기',
-                                  style: TextStyle(
-                                      color: Color(0xFF868686),
-                                      fontWeight: FontWeight.bold))
-                            ]))),
-                GestureDetector(
-                    onTap: () => _onTapNews(),
-                    child: Container(
-                        width: 150,
-                        height: 150,
-                        padding: const EdgeInsets.all(20),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: const Color(0xFFEEEEEE),
-                            borderRadius: BorderRadius.circular(20)),
-                        child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(Icons.arrow_forward,
-                                  size: 18, color: Color(0xFF868686)),
-                              Text('다른 기사 읽기',
-                                  style: TextStyle(
-                                      color: Color(0xFF868686),
-                                      fontWeight: FontWeight.bold))
-                            ]))),
-              ]))
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                              onTap: () => _onTap(3),
+                              child: Container(
+                                  width: 160,
+                                  height: 155,
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFEEEEEE),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Icon(Icons.arrow_forward,
+                                            size: 18, color: Color(0xFF868686)),
+                                        Text('출석 확인하기',
+                                            style: TextStyle(
+                                                color: Color(0xFF868686),
+                                                fontWeight: FontWeight.bold))
+                                      ]))),
+                          GestureDetector(
+                              onTap: () => _onTap(1),
+                              child: Container(
+                                  width: 160,
+                                  height: 155,
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFEEEEEE),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Icon(Icons.arrow_forward,
+                                            size: 18, color: Color(0xFF868686)),
+                                        Text('랭킹 확인하기',
+                                            style: TextStyle(
+                                                color: Color(0xFF868686),
+                                                fontWeight: FontWeight.bold))
+                                      ]))),
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                              onTap: () => _onTap(2),
+                              child: Container(
+                                  width: 160,
+                                  height: 155,
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFEEEEEE),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Icon(Icons.arrow_forward,
+                                            size: 18, color: Color(0xFF868686)),
+                                        Text('스크랩 읽기',
+                                            style: TextStyle(
+                                                color: Color(0xFF868686),
+                                                fontWeight: FontWeight.bold))
+                                      ]))),
+                          GestureDetector(
+                              onTap: () => _onTap(3),
+                              child: Container(
+                                  width: 160,
+                                  height: 155,
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFEEEEEE),
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Icon(Icons.arrow_forward,
+                                            size: 18, color: Color(0xFF868686)),
+                                        Text('계정 관리',
+                                            style: TextStyle(
+                                                color: Color(0xFF868686),
+                                                fontWeight: FontWeight.bold))
+                                      ]))),
+                        ])
+                  ]))
         ]));
   }
 }

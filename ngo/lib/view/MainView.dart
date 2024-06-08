@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/member/AccountView.dart';
-import 'package:ngo/view/member/AttendanceView.dart';
 import 'package:ngo/view/news/NewsListView.dart';
 import 'package:ngo/view/news/ReadingCompleteView.dart';
 import 'HomeView.dart';
 import 'rank/LeaderBoardView.dart';
-import 'scrap/ScrapView.dart';
+import 'scrap/ScrapListView.dart';
 
 class MainView extends StatefulWidget {
   final int initialIndex;
@@ -28,9 +27,9 @@ class _MenuState extends State<MainView> {
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
+    HomeView(),
     LeaderBoardView(),
-    ScrapScreen(),
+    ScrapListView(),
     AccountView(),
     ReadingCompleteView(),
     NewsListView(),
