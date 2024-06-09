@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/MainView.dart';
-import 'package:ngo/viewModel/AttendanceViewModel.dart';
-import 'package:ngo/viewModel/RankViewModel.dart';
+import 'package:ngo/viewModel/LoginViewModel.dart';
 import 'package:ngo/viewModel/TodayNewsViewModel.dart';
+import 'package:ngo/viewModel/UserViewModel.dart';
 import 'package:ngo/viewModel/scrapViewModel.dart';
 import 'package:provider/provider.dart';
 
@@ -15,20 +15,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userId = 1;
-
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => TodayNewsViewModel()),
-          ChangeNotifierProvider(create: (_) => AllAttendanceViewModel(userId)),
-          ChangeNotifierProvider(create: (_) => DayRankViewModel(userId)),
-          ChangeNotifierProvider(create: (_) => WeekRankViewModel(userId)),
-          ChangeNotifierProvider(create: (_) => ScrapViewModel(userId)),
-        ],
-        child: const MaterialApp(
-          title: '신문고',
-          home: MainView(),
-          debugShowCheckedModeBanner: false,
-        ));
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => TodayNewsViewModel()),
+      ],
+      child: Builder(
+        builder: (context) {
+          final loginViewModel = Provider.of<LoginViewModel>(context);
+          final userId = loginViewModel.userId;
+          const scrapId = 0;
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider(
+                  create: (_) =>
+                      ScrapListViewModel(loginViewModel.userId ?? 0)),
+              ChangeNotifierProvider(
+                  create: (_) => ScrapViewModel(userId ?? 0, scrapId)),
+              ChangeNotifierProvider(
+                  create: (_) =>
+                      ScrapSavingViewModel(userId ?? 0, "", "", "", "", "")),
+              ChangeNotifierProvider(
+                  create: (_) => UserViewModel(loginViewModel.userId ?? 0)),
+            ],
+            child: const MaterialApp(
+              title: '신문고',
+              home: MainView(),
+              debugShowCheckedModeBanner: false,
+            ),
+          );
+        },
+      ),
+    );
   }
 }
