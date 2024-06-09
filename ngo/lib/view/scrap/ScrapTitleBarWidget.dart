@@ -19,7 +19,7 @@ class ScrapTitleBarWidget extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    OneScrapViewModel viewModel = Provider.of<OneScrapViewModel>(context);
+    ScrapViewModel viewModel = Provider.of<ScrapViewModel>(context);
 
     return Container(
         width: double.infinity,
@@ -44,7 +44,7 @@ class ScrapTitleBarWidget extends StatelessWidget
               Container(
                   width: 350,
                   padding: const EdgeInsets.only(top: 20),
-                  child: Text(getString(viewModel.scrap!.title),
+                  child: Text(getString(viewModel.scrap?.title),
                       textAlign: TextAlign.left,
                       style: const TextStyle(
                           fontSize: 24,
@@ -64,7 +64,7 @@ class ScrapTitleBarWidget extends StatelessWidget
                                 color: const Color(0xFF7AD9C2),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Center(
-                                child: Text(getString(viewModel.scrap!.media),
+                                child: Text(getString(viewModel.scrap?.media),
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class ScrapTitleBarWidget extends StatelessWidget
                                 color: const Color(0xFFFFFFFF),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Center(
-                                child: Text(getString(viewModel.scrap!.editor),
+                                child: Text(getString(viewModel.scrap?.editor),
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,

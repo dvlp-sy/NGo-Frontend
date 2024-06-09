@@ -7,18 +7,16 @@ import 'package:provider/provider.dart';
 
 class ScrapView extends StatelessWidget {
   final int scrapId;
+  final int userId;
 
-  const ScrapView({super.key, required this.scrapId});
+  const ScrapView({super.key, required this.scrapId, required this.userId});
 
+  @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ScrapViewModel>(context);
-    final userId = viewModel.userId;
-
-    return ChangeNotifierProvider(
-        create: (_) => OneScrapViewModel(userId, scrapId),
-        child: Scaffold(
-            appBar: ScrapTitleBarWidget(userId: userId, scrapId: scrapId),
-            body: ScrapWidget(userId: userId, scrapId: scrapId)));
+    return Scaffold(
+      appBar: ScrapTitleBarWidget(userId: userId, scrapId: scrapId),
+      body: ScrapWidget(userId: userId, scrapId: scrapId),
+    );
   }
 }
 
@@ -38,7 +36,7 @@ class ScrapWidget extends StatefulWidget {
 }
 
 class _NewsViewState extends State<ScrapWidget> {
-  late OneScrapViewModel viewModel;
+  late ScrapViewModel scrapViewModel;
   late PageController _pageController = PageController();
   late int _selectedIndex;
 
@@ -81,11 +79,11 @@ class _NewsViewState extends State<ScrapWidget> {
     return sentences;
   }
 
-  List<Widget> _initPageList(OneScrapViewModel viewModel) {
+  List<Widget> _initPageList(ScrapViewModel scrapViewModel) {
     List<Widget> pageList = [];
-    List<String> contentList =
-        splitContents(getString(viewModel.scrap!.contents));
-    pageList.add(ScrapThumbnailView(viewModel: viewModel));
+    String contents = getString(scrapViewModel.scrap?.contents);
+    List<String> contentList = splitContents(contents);
+    pageList.add(ScrapThumbnailView(viewModel: scrapViewModel));
     for (String content in contentList) {
       pageList.add(ScrapContentView(content: content));
     }
@@ -100,11 +98,11 @@ class _NewsViewState extends State<ScrapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    viewModel = Provider.of<OneScrapViewModel>(context);
+    scrapViewModel = Provider.of<ScrapViewModel>(context);
 
     return PageView(
       controller: _pageController,
-      children: _initPageList(viewModel),
+      children: _initPageList(scrapViewModel),
     );
   }
 }

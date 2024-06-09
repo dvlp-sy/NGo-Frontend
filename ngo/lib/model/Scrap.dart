@@ -52,3 +52,23 @@ class ScrapListDto {
             .toList());
   }
 }
+
+class ScrapSavingDto {
+  String? title;
+  String? link;
+  String? media;
+  String? mediaCode;
+  String? articleCode;
+
+  ScrapSavingDto(
+      {this.title, this.link, this.media, this.mediaCode, this.articleCode});
+
+  factory ScrapSavingDto.fromJson(Map<String, dynamic> json) {
+    return ScrapSavingDto(
+        title: json['title'],
+        link: json['link'],
+        media: json['media'],
+        mediaCode: json['mediaCode'],
+        articleCode: json['articleCode']);
+  }
+}
