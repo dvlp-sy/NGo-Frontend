@@ -33,7 +33,7 @@ class _AccountState extends State<_AccountWidget> {
   static const List<Widget> _widgetOptions = <Widget>[
     AttendanceView(),
     MyPageView(),
-    WeekRankView(height: 300)
+    WeekRankView(height: 350)
   ];
 
   void _selectButton(int index) {
@@ -60,6 +60,19 @@ class _AccountState extends State<_AccountWidget> {
   void initState() {
     super.initState();
     _selectedIndex = widget.initialIndex;
+    if (_selectedIndex == 0) {
+      _attendanceFontWeight = FontWeight.bold;
+      _myPageFontWeight = FontWeight.normal;
+      _rankFontWeight = FontWeight.normal;
+    } else if (_selectedIndex == 1) {
+      _attendanceFontWeight = FontWeight.normal;
+      _myPageFontWeight = FontWeight.bold;
+      _rankFontWeight = FontWeight.normal;
+    } else {
+      _attendanceFontWeight = FontWeight.normal;
+      _myPageFontWeight = FontWeight.normal;
+      _rankFontWeight = FontWeight.bold;
+    }
     _pageController = PageController(initialPage: _selectedIndex);
   }
 
