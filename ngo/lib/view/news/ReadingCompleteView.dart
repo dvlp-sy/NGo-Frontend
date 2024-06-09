@@ -143,7 +143,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
                                 fontWeight: FontWeight.bold))
                       ]))),
           GestureDetector(
-              onTap: () => _onTap(6),
+              onTap: () => _onTap(0),
               child: Container(
                   width: 110,
                   height: 110,
@@ -158,7 +158,7 @@ class _ChallengeState extends State<_ChallengeWidget> {
                       children: [
                         Icon(Icons.arrow_forward,
                             size: 18, color: Color(0xFF868686)),
-                        Text('다른 기사 읽기',
+                        Text('홈으로 가기',
                             style: TextStyle(
                                 color: Color(0xFF868686),
                                 fontWeight: FontWeight.bold))

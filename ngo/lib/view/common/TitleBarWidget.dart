@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ngo/view/common/GoBackWidget.dart';
+import 'package:ngo/viewModel/scrapViewModel.dart';
+import 'package:provider/provider.dart';
 import '../../model/TodayNews.dart';
 
 class TitleBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final TodayNews todayNews;
-  const TitleBarWidget({super.key, required this.todayNews});
+  final int userId;
+  const TitleBarWidget(
+      {super.key, required this.todayNews, required this.userId});
 
   String getString(String? value) {
     if (value != null && value != "") {
@@ -81,11 +85,75 @@ class TitleBarWidget extends StatelessWidget implements PreferredSizeWidget {
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Color(0xFF000000)))))
+                                        color: Color(0xFF000000))))),
+                        ScrapButton(todayNews: todayNews, userId: userId)
                       ]))
             ]));
   }
 
   @override
-  Size get preferredSize => const Size(0.0, 250.0);
+  Size get preferredSize => const Size(0.0, 280.0);
+}
+
+class ScrapButton extends StatefulWidget {
+  final bool isSaved;
+  final int userId;
+  final TodayNews todayNews;
+  const ScrapButton(
+      {super.key,
+      required this.userId,
+      required this.todayNews,
+      this.isSaved = false});
+
+  @override
+  State<ScrapButton> createState() => ScrapButtonState();
+}
+
+class ScrapButtonState extends State<ScrapButton> {
+  late bool _isSaved;
+  late ScrapViewModel scrapViewModel;
+  late ScrapSavingViewModel scrapSavingViewModel;
+
+  Icon _scrapIcon = const Icon(Icons.bookmark_border, size: 30);
+
+  String getString(String? value) {
+    if (value != null && value != "") {
+      return value.toString();
+    }
+    return "";
+  }
+
+  void _selectButton() {
+    setState(() {
+      TodayNews news = widget.todayNews;
+      if (_isSaved == false) {
+        scrapSavingViewModel.saveScrap(
+            widget.userId,
+            getString(news.title),
+            "https://n.news.naver.com/mnews/article/${getString(news.mediaCode)}/${getString(news.articleCode)}",
+            getString(news.media),
+            getString(news.mediaCode),
+            getString(news.articleCode));
+
+        _isSaved = true;
+        _scrapIcon = const Icon(Icons.bookmark_added, size: 30);
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isSaved = widget.isSaved;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    scrapSavingViewModel = Provider.of<ScrapSavingViewModel>(context);
+
+    return GestureDetector(
+        onTap: () => _selectButton(),
+        child: Container(
+            width: 100, alignment: Alignment.centerRight, child: _scrapIcon));
+  }
 }

@@ -10,7 +10,8 @@ class CalendarView extends StatelessWidget {
     return Consumer<AllAttendanceViewModel>(
       builder: (context, viewModel, child) {
         if (viewModel.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+              child: CircularProgressIndicator(color: Color(0xFF7AD9C2)));
         }
 
         if (viewModel.errorMessage != null) {

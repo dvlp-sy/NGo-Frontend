@@ -29,11 +29,14 @@ class ScrapBoxView extends StatefulWidget {
 }
 
 class _ScrapBoxState extends State<ScrapBoxView> {
-  late ScrapViewModel viewModel;
+  late ScrapListViewModel scrapListViewModel;
+  late ScrapViewModel scrapViewModel;
 
-  void _buttonPressed(int scrapId) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => ScrapView(scrapId: scrapId)));
+  void _buttonPressed(BuildContext context, int scrapId, int userId) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ScrapView(scrapId: scrapId, userId: userId)));
   }
 
   @override
@@ -43,7 +46,9 @@ class _ScrapBoxState extends State<ScrapBoxView> {
 
   @override
   Widget build(BuildContext context) {
-    viewModel = Provider.of<ScrapViewModel>(context);
+    scrapListViewModel =
+        Provider.of<ScrapListViewModel>(context, listen: false);
+    scrapViewModel = Provider.of<ScrapViewModel>(context, listen: false);
 
     return Container(
         width: 450,
@@ -51,57 +56,55 @@ class _ScrapBoxState extends State<ScrapBoxView> {
         margin: const EdgeInsets.all(20),
         child: SingleChildScrollView(
             child: Column(children: [
-          if (viewModel.scrapListDto?.scrapDtoList != null)
-            ...viewModel.scrapListDto!.scrapDtoList!.map((scrap) {
-              return Provider(
-                  create: (_) =>
-                      OneScrapViewModel(viewModel.userId, scrap.scrapId!),
-                  child: GestureDetector(
-                      onTap: () {
-                        _buttonPressed(scrap.scrapId!);
-                      },
-                      child: Container(
-                          width: 450,
-                          height: 180,
-                          margin: const EdgeInsets.all(20),
-                          padding: const EdgeInsets.only(left: 20, right: 30),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFEEEEEE),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                    margin: const EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: Text("${scrap.title}",
+          if (scrapListViewModel.scrapListDto?.scrapDtoList != null)
+            ...scrapListViewModel.scrapListDto!.scrapDtoList!.map((scrap) {
+              return GestureDetector(
+                  onTap: () {
+                    _buttonPressed(
+                        context, scrap.scrapId ?? 0, scrapListViewModel.userId);
+                  },
+                  child: Container(
+                      width: 450,
+                      height: 180,
+                      margin: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.only(left: 20, right: 30),
+                      decoration: BoxDecoration(
+                          color: const Color(0xFFEEEEEE),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                                margin:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: Text("${scrap.title}",
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold))),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      height: 30,
+                                      margin: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFF7AD9C2),
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      child: Center(
+                                          child: Text(
+                                        "${scrap.media}",
                                         style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold))),
-                                Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                          width: 100,
-                                          height: 30,
-                                          margin: const EdgeInsets.only(
-                                              left: 10, right: 10),
-                                          decoration: BoxDecoration(
-                                              color: const Color(0xFF7AD9C2),
-                                              borderRadius:
-                                                  BorderRadius.circular(20)),
-                                          child: Center(
-                                              child: Text(
-                                            "${scrap.media}",
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xFFFFFFFF)),
-                                          ))),
-                                      const Icon(Icons.arrow_forward, size: 20)
-                                    ])
-                              ]))));
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFFFFFFFF)),
+                                      ))),
+                                  const Icon(Icons.arrow_forward, size: 20)
+                                ])
+                          ])));
             })
         ])));
   }

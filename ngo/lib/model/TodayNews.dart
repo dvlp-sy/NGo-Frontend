@@ -8,6 +8,8 @@ class TodayNews {
   String? summary;
   String? contents;
   String? level;
+  String? mediaCode;
+  String? articleCode;
 
   TodayNews(
       {this.newsId,
@@ -18,7 +20,9 @@ class TodayNews {
       this.thumbnail,
       this.summary,
       this.contents,
-      this.level});
+      this.level,
+      this.mediaCode,
+      this.articleCode});
 
   TodayNews.empty();
 
@@ -32,22 +36,8 @@ class TodayNews {
         thumbnail: json['thumbnail'],
         summary: json['summary'],
         contents: json['contents'],
-        level: json['level']);
+        level: json['level'],
+        mediaCode: json['mediaCode'],
+        articleCode: json['articleCode']);
   }
 }
-
-/*
-class TodayNewsList {
-  List<TodayNews>? newsList;
-
-  TodayNewsList({this.newsList});
-
-  factory TodayNewsList.fromJson(Map<String, dynamic> json) {
-    var dataList = json['data'] as List;
-    List<TodayNews> todayNewsList =
-        dataList.map((data) => TodayNews.fromJson(data)).toList();
-
-    return TodayNewsList(newsList: todayNewsList);
-  }
-}
-*/

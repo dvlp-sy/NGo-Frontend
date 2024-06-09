@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ngo/view/common/TitleBarWidget.dart';
 import 'package:ngo/view/news/ContentView.dart';
 import 'package:ngo/view/news/ThumbnailView.dart';
+import 'package:ngo/viewModel/UserViewModel.dart';
+import 'package:provider/provider.dart';
 import '../../model/TodayNews.dart';
 
 class NewsView extends StatefulWidget {
@@ -16,6 +18,7 @@ class NewsView extends StatefulWidget {
 class _NewsViewState extends State<NewsView> {
   late PageController _pageController = PageController();
   late int _selectedIndex;
+  late UserViewModel userViewModel;
 
   @override
   void initState() {
@@ -74,8 +77,11 @@ class _NewsViewState extends State<NewsView> {
 
   @override
   Widget build(BuildContext context) {
+    userViewModel = Provider.of<UserViewModel>(context);
+    int userId = userViewModel.userDto?.userId ?? 0;
+
     return Scaffold(
-        appBar: TitleBarWidget(todayNews: widget.todayNews),
+        appBar: TitleBarWidget(todayNews: widget.todayNews, userId: userId),
         body: PageView(
           controller: _pageController,
           children: _initPageList(widget.todayNews),

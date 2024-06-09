@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ngo/view/member/AccountView.dart';
+import 'package:ngo/view/login/LoginView.dart';
+import 'package:ngo/viewModel/LoginViewModel.dart';
+import 'package:provider/provider.dart';
 import 'news/TodayNewsView.dart';
 import 'MainView.dart';
 
@@ -104,12 +106,15 @@ class _TodayNewsState extends State<_TodayNewsWidget> {
         MaterialPageRoute(builder: (context) => const TodayNewsView()));
   }
 
+  void _routeLoginPage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginView()));
+  }
+
   @override
   Widget build(BuildContext buildContext) {
     return GestureDetector(
-        onTap: () {
-          _buttonPressed();
-        },
+        onTap: () => _buttonPressed(),
         child: Container(
             width: 350,
             height: 80,
@@ -149,13 +154,15 @@ class _ChallengeState extends State<_ChallengeWidget> {
         MaterialPageRoute(builder: (context) => MainView(initialIndex: index)));
   }
 
-  void _onTapNews() {
+  void _routeLoginPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const AccountView()));
+        context, MaterialPageRoute(builder: (context) => LoginView()));
   }
 
   @override
   Widget build(BuildContext context) {
+    final loginViewModel = Provider.of<LoginViewModel>(context);
+
     return Container(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         width: 350,
@@ -184,7 +191,9 @@ class _ChallengeState extends State<_ChallengeWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                              onTap: () => _onTap(3),
+                              onTap: loginViewModel.isLogin
+                                  ? () => _onTap(3)
+                                  : () => _routeLoginPage(),
                               child: Container(
                                   width: 160,
                                   height: 155,
@@ -205,7 +214,9 @@ class _ChallengeState extends State<_ChallengeWidget> {
                                                 fontWeight: FontWeight.bold))
                                       ]))),
                           GestureDetector(
-                              onTap: () => _onTap(1),
+                              onTap: loginViewModel.isLogin
+                                  ? () => _onTap(1)
+                                  : () => _routeLoginPage(),
                               child: Container(
                                   width: 160,
                                   height: 155,
@@ -230,7 +241,9 @@ class _ChallengeState extends State<_ChallengeWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                              onTap: () => _onTap(2),
+                              onTap: loginViewModel.isLogin
+                                  ? () => _onTap(2)
+                                  : () => _routeLoginPage(),
                               child: Container(
                                   width: 160,
                                   height: 155,
@@ -251,7 +264,9 @@ class _ChallengeState extends State<_ChallengeWidget> {
                                                 fontWeight: FontWeight.bold))
                                       ]))),
                           GestureDetector(
-                              onTap: () => _onTap(3),
+                              onTap: loginViewModel.isLogin
+                                  ? () => _onTap(6)
+                                  : () => _routeLoginPage,
                               child: Container(
                                   width: 160,
                                   height: 155,
