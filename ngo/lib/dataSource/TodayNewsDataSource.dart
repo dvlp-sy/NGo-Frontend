@@ -8,7 +8,7 @@ class TodayNewsDataSource {
 
   Future<List<TodayNews>> getTodayNews() async {
     final response =
-        await http.get(Uri.parse('$address/api/today-news?level=mid'));
+        await http.get(Uri.parse('$address/api/today-news?level=high'));
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse =

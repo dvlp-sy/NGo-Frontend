@@ -18,8 +18,6 @@ class _GoBackState extends State<GoNextWidget> {
     size = widget.size;
   }
 
-  void _onTap() {}
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

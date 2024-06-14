@@ -13,10 +13,6 @@ class WeekCalendarView extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (viewModel.errorMessage != null) {
-          return Center(child: Text(viewModel.errorMessage!));
-        }
-
         List<int> dateList = viewModel.allAttendanceDto?.attendanceList
                 ?.map((attendance) => DateTime.parse(attendance.date!).day)
                 .toList() ??
